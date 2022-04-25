@@ -28,7 +28,13 @@ public class shipScript : MonoBehaviour
         if (!shipRenderer.isVisible)
         {
             Vector3 shipPosition = this.gameObject.transform.position;
-            shipPosition.x = 0;
+            if (shipPosition.x <= -2.8f)
+            {
+                shipPosition.x = 2.8f;
+            } else if (shipPosition.x >= 2.8f)
+            {
+                shipPosition.x = -2.8f;
+            }
             this.gameObject.transform.position = shipPosition;
         }
     }
