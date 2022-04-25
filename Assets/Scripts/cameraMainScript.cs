@@ -8,6 +8,8 @@ public class cameraMainScript : MonoBehaviour
     private int numberToReach;
     private GameObject numberToReachText;
 
+    public GameObject cubeToDestruct;
+
     private int? currentBag;
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,12 @@ public class cameraMainScript : MonoBehaviour
         if (this.numberToReach.Equals(0))
         {
             RenewNumberToReach();
+        }
+        Debug.Log(cubeToDestruct.GetInstanceID());
+        if (false)
+        {
+            Debug.Log("Instantiate a cube");
+            Instantiate(cubeToDestruct, new Vector3(0, 0, 0), Quaternion.identity);
         }
 
         if (currentBag != null && currentBag == this.numberToReach)

@@ -965,6 +965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15f004687dd1446bd934a7016350fb28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cubeToDestruct: {fileID: 0}
 --- !u!1001 &660345949
 PrefabInstance:
   m_ObjectHideFlags: 0
