@@ -25,7 +25,7 @@ public class cameraMainScript : MonoBehaviour
         {
             RenewNumberToReach();
         }
-        Debug.Log(cubeToDestruct.GetInstanceID());
+        
         if (false)
         {
             Debug.Log("Instantiate a cube");

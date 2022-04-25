@@ -31,7 +31,7 @@ public class ButtonLongPressListener : MonoBehaviour,IPointerDownHandler,IPointe
                 isLongPressed = true ;
                 elapsedTime = 0f ;
                 if (button.interactable && !object.ReferenceEquals (onLongPress, null))
-                    onLongPress.Invoke () ;
+                    onLongPress.Invoke();
             }
         }
     }
