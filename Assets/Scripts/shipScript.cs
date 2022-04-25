@@ -18,7 +18,7 @@ public class shipScript : MonoBehaviour
 
         wallOfFire = GameObject.Find("WallOfFire");
 
-        gameOverScreen = GameObject.Find("GameOver");
+        gameOverScreen = GameObject.Find("GameOverMessage");
         gameOverScreen.SetActive(false);
     }
 
