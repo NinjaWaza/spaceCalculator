@@ -8,6 +8,7 @@ public class shipScript : MonoBehaviour
     private GameObject gazButton;
     private GameObject gameOverScreen;
     private GameObject wallOfFire;
+    private GameObject numberToReachText;
     
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,8 @@ public class shipScript : MonoBehaviour
 
         gameOverScreen = GameObject.Find("GameOverMessage");
         gameOverScreen.SetActive(false);
+        
+        numberToReachText = GameObject.Find("NumberToReachText");
     }
 
     // Update is called once per frame
@@ -46,6 +49,7 @@ public class shipScript : MonoBehaviour
         {
             DisplayGameOver();
             gameObject.SetActive(false);
+            numberToReachText.SetActive(false);
             Debug.Log("Game Over");
         }
 

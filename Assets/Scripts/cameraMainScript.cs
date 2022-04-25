@@ -6,20 +6,22 @@ public class cameraMainScript : MonoBehaviour
 {
     private GameObject ship;
     private int numberToReach;
+    private GameObject numberToReachText;
 
     private int? currentBag;
     // Start is called before the first frame update
     void Start()
     {
         ship = GameObject.Find("Ship");
+        numberToReachText = GameObject.Find("NumberToReachText");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (this.numberToReach == null)
+        if (this.numberToReach.Equals(0))
         {
-            renewNumberToReach();
+            RenewNumberToReach();
         }
 
         if (currentBag != null && currentBag == this.numberToReach)
@@ -29,10 +31,10 @@ public class cameraMainScript : MonoBehaviour
             //We have to reset the currentBag and generate a new target number
             int numberToReachHistory = this.numberToReach;
             currentBag = null;
-            renewNumberToReach();
+            RenewNumberToReach();
             while (this.numberToReach.Equals(numberToReachHistory))
             {
-                renewNumberToReach();
+                RenewNumberToReach();
             }
             
             //If collision
@@ -40,11 +42,12 @@ public class cameraMainScript : MonoBehaviour
         }
     }
 
-    void renewNumberToReach()
+    void RenewNumberToReach()
     {
         System.Random randomGenerator = new System.Random();
 
-        int generatedNumber = randomGenerator.Next(10,100);
+        int generatedNumber = randomGenerator.Next(10,50);
         this.numberToReach = generatedNumber;
+        numberToReachText.GetComponent<UnityEngine.UI.Text>().text = this.numberToReach.ToString();
     }
 }
