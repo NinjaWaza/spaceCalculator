@@ -21,20 +21,32 @@ public class gazButtonScript : MonoBehaviour
         Vector3 shipPosition = ship.transform.position;
         shipPosition.y -= 0.0015f;
         ship.transform.position = shipPosition;
-        if (isPressed)
+        if (isPressed || Input.GetKey(KeyCode.UpArrow))
         {
             forwardShip();
         }
         
-        if (leftButtonIsPressed)
+        if (isPressed || Input.GetKey(KeyCode.DownArrow))
+        {
+            backwardShip();
+        }
+
+        if (leftButtonIsPressed || Input.GetKey(KeyCode.LeftArrow))
         {
             moveShipToLeft();
         }
         
-        if (rightButtonIsPressed)
+        if (rightButtonIsPressed || Input.GetKey(KeyCode.RightArrow))
         {
             moveShipToRight();
         }
+    }
+    
+    public void backwardShip()
+    {
+        Vector3 shipPosition = ship.transform.position;
+        shipPosition.y -= 0.01f;
+        ship.transform.position = shipPosition;
     }
 
     public void moveShipToLeft()
