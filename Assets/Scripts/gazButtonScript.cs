@@ -18,28 +18,31 @@ public class gazButtonScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 shipPosition = ship.transform.position;
-        shipPosition.y -= 0.0015f;
-        ship.transform.position = shipPosition;
-        if (isPressed || Input.GetKey(KeyCode.UpArrow))
-        {
-            forwardShip();
-        }
-        
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            backwardShip();
-        }
+    	if (Time.timeScale != 0)
+    	{
+			Vector3 shipPosition = ship.transform.position;
+	        shipPosition.y -= 0.0015f;
+	        ship.transform.position = shipPosition;
+	        if (isPressed || Input.GetKey(KeyCode.UpArrow))
+	        {
+	            forwardShip();
+	        }
+	        
+	        if (Input.GetKey(KeyCode.DownArrow))
+	        {
+	            backwardShip();
+	        }
 
-        if (leftButtonIsPressed || Input.GetKey(KeyCode.LeftArrow))
-        {
-            moveShipToLeft();
-        }
-        
-        if (rightButtonIsPressed || Input.GetKey(KeyCode.RightArrow))
-        {
-            moveShipToRight();
-        }
+	        if (leftButtonIsPressed || Input.GetKey(KeyCode.LeftArrow))
+	        {
+	            moveShipToLeft();
+	        }
+	        
+	        if (rightButtonIsPressed || Input.GetKey(KeyCode.RightArrow))
+	        {
+	            moveShipToRight();
+	        }
+    	}
     }
     
     public void backwardShip()
