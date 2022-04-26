@@ -26,7 +26,7 @@ public class gazButtonScript : MonoBehaviour
             forwardShip();
         }
         
-        if (isPressed || Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow))
         {
             backwardShip();
         }
