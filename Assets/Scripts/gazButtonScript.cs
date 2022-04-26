@@ -18,9 +18,10 @@ public class gazButtonScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    
     	if (Time.timeScale != 0)
     	{
-			Vector3 shipPosition = ship.transform.position;
+			    Vector3 shipPosition = ship.transform.position;
 	        shipPosition.y -= 0.0015f;
 	        ship.transform.position = shipPosition;
 	        if (isPressed || Input.GetKey(KeyCode.UpArrow))
