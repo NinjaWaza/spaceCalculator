@@ -50,16 +50,9 @@ public class shipScript : MonoBehaviour
             DisplayGameOver();
             gameObject.SetActive(false);
             numberToReachText.SetActive(false);
+            Time.timeScale = 0;
             Debug.Log("Game Over");
-            Destroy(this.gameObject);
         }
-
-        /*
-        GameObject e = Instantiate(explosion) as GameObject;
-        e.transform.position = transform.position;
-        Destroy(other.gameObject);
-        this.gameObject.SetActive(false);
-        */
     }
     
     public void DisplayGameOver()
