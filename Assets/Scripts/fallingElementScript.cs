@@ -16,6 +16,8 @@ public class fallingElementScript : MonoBehaviour
     private GameObject numberToReachText;
     private string firstValue;
     private string op;
+    private int scorePlayer;
+    private string scorePlayerText;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,8 @@ public class fallingElementScript : MonoBehaviour
         numberToReachText = GameObject.Find("NumberToReachText");
         firstValue = "";
         op = "";
+        scorePlayer = 0;
+        scorePlayerText = "";
     }
 
     // Update is called once per frame
@@ -68,9 +72,17 @@ public class fallingElementScript : MonoBehaviour
                     }
                     int vToReach = int.Parse(numberToReachText.GetComponent<UnityEngine.UI.Text>().text);
                     if( vfinal.Equals(vToReach)){
-                        reponse.GetComponent<UnityEngine.UI.Text>().text = "True";
+                        //reponse.GetComponent<UnityEngine.UI.Text>().text = "True";
+
+                        scorePlayer += 1;
+                        scorePlayerText = scorePlayer.ToString();
+                        reponse.GetComponent<UnityEngine.UI.Text>().text = scorePlayerText;
                     }else{
-                        reponse.GetComponent<UnityEngine.UI.Text>().text = "False";
+                        //reponse.GetComponent<UnityEngine.UI.Text>().text = "False";
+
+                        scorePlayer -= 1;
+                        scorePlayerText = scorePlayer.ToString();
+                        reponse.GetComponent<UnityEngine.UI.Text>().text = scorePlayerText;
                     }
                     actualNumber.GetComponent<UnityEngine.UI.Text>().text = vfinal.ToString();
                     this.firstValue = "";
