@@ -51,9 +51,9 @@ public class shipScript : MonoBehaviour
             gameObject.SetActive(false);
             numberToReachText.SetActive(false);
             Debug.Log("Game Over");
+            Destroy(this.gameObject);
         }
 
-        Destroy(this.gameObject);
         /*
         GameObject e = Instantiate(explosion) as GameObject;
         e.transform.position = transform.position;
