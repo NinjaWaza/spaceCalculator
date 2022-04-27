@@ -5,8 +5,8 @@ using UnityEngine;
 public class cameraMainScript : MonoBehaviour
 {
     private GameObject ship;
-    private int numberToReach;
-    private GameObject numberToReachText;
+    public int numberToReach;
+    public GameObject numberToReachText;
 
     private int? currentBag;
     // Start is called before the first frame update
@@ -42,7 +42,7 @@ public class cameraMainScript : MonoBehaviour
         }
     }
 
-    void RenewNumberToReach()
+    public void RenewNumberToReach()
     {
         System.Random randomGenerator = new System.Random();
 

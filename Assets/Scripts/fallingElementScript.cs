@@ -16,8 +16,6 @@ public class fallingElementScript : MonoBehaviour
     private GameObject numberToReachText;
     private string firstValue;
     private string op;
-    private int scorePlayer;
-    private string scorePlayerText;
 
     // Start is called before the first frame update
     void Start()
@@ -31,10 +29,7 @@ public class fallingElementScript : MonoBehaviour
         mainCamera = GameObject.Find("Main Camera");
         reponse = GameObject.Find("Reponse");
         numberToReachText = GameObject.Find("NumberToReachText");
-        firstValue = "";
-        op = "";
-        scorePlayer = 0;
-        scorePlayerText = "";
+    
     }
 
     // Update is called once per frame
@@ -50,21 +45,21 @@ public class fallingElementScript : MonoBehaviour
         else{
 
             if(this.value.text.Equals("+") || this.value.text.Equals("-")){
-                this.op = this.value.text;
-                actualNumber.GetComponent<UnityEngine.UI.Text>().text = firstValue + this.value.text;
-                SetValue2(firstValue);
+                reponse.GetComponent<ReponseScript>().setOp(this.value.text);
+                actualNumber.GetComponent<UnityEngine.UI.Text>().text = reponse.GetComponent<ReponseScript>().getFirstValue() + this.value.text;
+                SetValue2(reponse.GetComponent<ReponseScript>().getFirstValue());
             }
             else{
-                if(firstValue.Equals("")){
-                    firstValue = this.value.text;
+                if(reponse.GetComponent<ReponseScript>().getFirstValue().Equals("")){
+                    reponse.GetComponent<ReponseScript>().setFirstValue(this.value.text);
                     actualNumber.GetComponent<UnityEngine.UI.Text>().text = this.value.text;
                     SendOperator();
                 }
                 else{
-                    int v1 = int.Parse(this.firstValue);
+                    int v1 = int.Parse(this.reponse.GetComponent<ReponseScript>().getFirstValue());
                     int v2 = int.Parse(this.value.text);
                     int vfinal = 0;
-                    if(op.Equals("+")){
+                    if(this.reponse.GetComponent<ReponseScript>().getOp().Equals("+")){
                         vfinal = v1 + v2;
                     }
                     else{
@@ -74,19 +69,21 @@ public class fallingElementScript : MonoBehaviour
                     if( vfinal.Equals(vToReach)){
                         //reponse.GetComponent<UnityEngine.UI.Text>().text = "True";
 
-                        scorePlayer += 1;
-                        scorePlayerText = scorePlayer.ToString();
-                        reponse.GetComponent<UnityEngine.UI.Text>().text = scorePlayerText;
+                        this.reponse.GetComponent<ReponseScript>().scorePlayer += 1;
+                        this.reponse.GetComponent<ReponseScript>().scorePlayerText = this.reponse.GetComponent<ReponseScript>().scorePlayer.ToString();
+                        reponse.GetComponent<UnityEngine.UI.Text>().text = this.reponse.GetComponent<ReponseScript>().scorePlayerText;
                     }else{
                         //reponse.GetComponent<UnityEngine.UI.Text>().text = "False";
-
-                        scorePlayer -= 1;
-                        scorePlayerText = scorePlayer.ToString();
-                        reponse.GetComponent<UnityEngine.UI.Text>().text = scorePlayerText;
+                        if(this.reponse.GetComponent<ReponseScript>().scorePlayer > 0){
+                            this.reponse.GetComponent<ReponseScript>().scorePlayer -= 1;
+                        }
+                        this.reponse.GetComponent<ReponseScript>().scorePlayerText = this.reponse.GetComponent<ReponseScript>().scorePlayer.ToString();
+                        this.reponse.GetComponent<UnityEngine.UI.Text>().text = this.reponse.GetComponent<ReponseScript>().scorePlayerText;
                     }
+                    this.mainCamera.GetComponent<cameraMainScript>().RenewNumberToReach();
                     actualNumber.GetComponent<UnityEngine.UI.Text>().text = vfinal.ToString();
-                    this.firstValue = "";
-                    this.op = "";
+                    this.reponse.GetComponent<ReponseScript>().setFirstValue("");
+                    this.reponse.GetComponent<ReponseScript>().setOp("");
                 }
             }
             Reset();
